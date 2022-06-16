@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./app.scss";
 import LevelSelect from "./pages/levelSelect";
 import logo from "./assets/logo.svg";
+import Level from "./pages/level";
 
 function App() {
   const [showLogo, setShowLogo] = useState(true);
@@ -15,7 +16,11 @@ function App() {
 
   return (
     <div className="layout">
-      {!level ? <LevelSelect setLevel={setLevel} /> : <LevelSelect />}
+      {!level ? (
+        <LevelSelect setLevel={setLevel} />
+      ) : (
+        <Level background={level.image} />
+      )}
       {showLogo && (
         <div
           className={`game-logo-container ${fadeOutLogo && "fade-out"}`}
