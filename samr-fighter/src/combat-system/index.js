@@ -64,86 +64,115 @@ class CombatSystem {
         return this.#enemyHealth;
     }
 
+    getMovesPerTurn() {
+        return this.#numberOfMovePerTurn;
+    }
+
     attack(samrMoves, enemyMoves) {
         // Calculates damage
+        console.log('samrMoves.length',samrMoves.length,this.#numberOfMovePerTurn)
+        if (samrMoves.length > this.#numberOfMovePerTurn || enemyMoves.length > this.#numberOfMovePerTurn) {
+            console.error('Too Many Moves');
+            return;
+        }
         samrMoves.forEach((move, index) => {
             const enemyMove = enemyMoves[index];
             switch (move) {
                 case 'punch': {
                     switch (enemyMove){
                         case 'punch': {
+                            this.#enemyMoves.punch -=1;
                             break;
                         }
                         case 'kick': {
                             this.#samrHealth -= 2;
+                            this.#enemyMoves.kick -=1;
                             break;
                         }
                         case 'block': {
                             this.#samrHealth -= 2;
+                            this.#enemyMoves.block -=1;
                             break;
                         }
                         case 'duck': {
                             this.#samrHealth -= 1;
+                            this.#enemyMoves.duck -=1;
                             break;
                         }
                     }
+                    this.#samrMoves.punch -=1;
                     break;
                 }
                 case 'kick': {
                     switch (enemyMove){
                         case 'punch': {
                             this.#enemyHealth -= 2;
+                            this.#enemyMoves.punch -=1;
                             break;
                         }
                         case 'kick': {
+                            this.#enemyMoves.kick -=1;
                             break;
                         }
                         case 'block': {
                             this.#enemyHealth -= 1;
+                            this.#enemyMoves.block -=1;
                             break;
                         }
                         case 'duck': {
                             this.#enemyHealth -= 2;
+                            this.#enemyMoves.duck -=1;
                             break;
                         }
                     }
+                    this.#samrMoves.kick -=1;
                     break;
                 }
                 case 'duck': {
                     switch (enemyMove){
                         case 'punch': {
                             this.#samrHealth -= 1;
+                            this.#enemyMoves.punch -=1;
                             break;
                         }
                         case 'kick': {
                             this.#samrHealth -= 2;
+                            this.#enemyMoves.kick -=1;
                             break;
                         }
                         case 'block': {
+                            this.#enemyMoves.block -=1;
                             break;
                         }
                         case 'duck': {
+                            this.#enemyMoves.duck -=1;
                             break;
                         }
                     }
+                    this.#samrMoves.duck -=1;
                     break;
                 }
                 case 'block': {
                     switch (enemyMove){
                         case 'punch': {
                             this.#samrHealth -= 2;
+                            this.#enemyMoves.punch -=1;
                             break;
                         }
                         case 'kick': {
                             this.#samrHealth -= 1;
+                            this.#enemyMoves.kick -=1;
                             break;
                         }
                         case 'block': {
+                            this.#enemyMoves.block -=1;
                             break;
                         }
                         case 'duck': {
+                            this.#enemyMoves.duck -=1;
                             break;
                         }
+                            this.#samrMoves.block -=1;
                     }
                     break;
                 }
