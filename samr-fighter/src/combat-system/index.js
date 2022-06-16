@@ -4,9 +4,9 @@ class CombatSystem {
     #samrHealth = 10;
     #enemyHealth;
     #numberOfMovePerTurn;
-    #numberOfMovePerType;
     #samrMoves;
     #enemyMoves;
+
     constructor(mode) {
         switch (mode) {
             case 'easy': {
@@ -48,8 +48,12 @@ class CombatSystem {
         this.availableMoves = this.availableMoves.bind(this);
     }
 
-    availableMoves() {
-        return this.#moves;
+    availableMoves(who) {
+        if (who === 'samr') {
+            return this.#samrMoves;
+        } else {
+            return this.#enemyMoves;
+        }
     }
 
     getSamrHealth() {
@@ -60,88 +64,92 @@ class CombatSystem {
         return this.#enemyHealth;
     }
 
-    attack(samrMove, enemyMove) {
+    attack(samrMoves, enemyMoves) {
         // Calculates damage
-        switch (samrMove) {
-            case 'punch': {
-                switch (enemyMove){
-                    case 'punch': {
-                        break;
+        samrMoves.forEach((move, index) => {
+            const enemyMove = enemyMoves[index];
+            switch (move) {
+                case 'punch': {
+                    switch (enemyMove){
+                        case 'punch': {
+                            break;
+                        }
+                        case 'kick': {
+                            this.#samrHealth -= 2;
+                            break;
+                        }
+                        case 'block': {
+                            this.#samrHealth -= 2;
+                            break;
+                        }
+                        case 'duck': {
+                            this.#samrHealth -= 1;
+                            break;
+                        }
                     }
-                    case 'kick': {
-                        this.#samrHealth -= 2;
-                        break;
-                    }
-                    case 'block': {
-                        this.#samrHealth -= 2;
-                        break;
-                    }
-                    case 'duck': {
-                        this.#samrHealth -= 1;
-                        break;
-                    }
+                    break;
                 }
-                break;
-            }
-            case 'kick': {
-                switch (enemyMove){
-                    case 'punch': {
-                        this.#enemyHealth -= 2;
-                        break;
+                case 'kick': {
+                    switch (enemyMove){
+                        case 'punch': {
+                            this.#enemyHealth -= 2;
+                            break;
+                        }
+                        case 'kick': {
+                            break;
+                        }
+                        case 'block': {
+                            this.#enemyHealth -= 1;
+                            break;
+                        }
+                        case 'duck': {
+                            this.#enemyHealth -= 2;
+                            break;
+                        }
                     }
-                    case 'kick': {
-                        break;
-                    }
-                    case 'block': {
-                        this.#enemyHealth -= 1;
-                        break;
-                    }
-                    case 'duck': {
-                        this.#enemyHealth -= 2;
-                        break;
-                    }
+                    break;
                 }
-                break;
-            }
-            case 'duck': {
-                switch (enemyMove){
-                    case 'punch': {
-                        this.#samrHealth -= 1;
-                        break;
+                case 'duck': {
+                    switch (enemyMove){
+                        case 'punch': {
+                            this.#samrHealth -= 1;
+                            break;
+                        }
+                        case 'kick': {
+                            this.#samrHealth -= 2;
+                            break;
+                        }
+                        case 'block': {
+                            break;
+                        }
+                        case 'duck': {
+                            break;
+                        }
                     }
-                    case 'kick': {
-                        this.#samrHealth -= 2;
-                        break;
-                    }
-                    case 'block': {
-                        break;
-                    }
-                    case 'duck': {
-                        break;
-                    }
+                    break;
                 }
-                break;
-            }
-            case 'block': {
-                switch (enemyMove){
-                    case 'punch': {
-                        this.#samrHealth -= 2;
-                        break;
+                case 'block': {
+                    switch (enemyMove){
+                        case 'punch': {
+                            this.#samrHealth -= 2;
+                            break;
+                        }
+                        case 'kick': {
+                            this.#samrHealth -= 1;
+                            break;
+                        }
+                        case 'block': {
+                            break;
+                        }
+                        case 'duck': {
+                            break;
+                        }
                     }
-                    case 'kick': {
-                        this.#samrHealth -= 1;
-                        break;
-                    }
-                    case 'block': {
-                        break;
-                    }
-                    case 'duck': {
-                        break;
-                    }
+                    break;
                 }
-                break;
             }
-        }
+        })
+
     }
 }
 
