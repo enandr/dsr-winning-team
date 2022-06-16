@@ -2,26 +2,24 @@
 
 @font-face {
   font-family: "RefrigeratorDeluxe";
-  src: local("RefrigeratorDeluxe"),
-    url("./fonts/refrigerator-deluxe/refrigerator-deluxe-regular.otf")
-      format("otf"),
-    url("./fonts/refrigerator-deluxe/refrigerator-deluxe-bold.otf")
-      format("otf"),
-    url("./fonts/refrigerator-deluxe/refrigerator-deluxe-light.otf")
-      format("otf"),
-    url("./fonts/refrigerator-deluxe/refrigerator-deluxe-extrabold.otf")
-      format("otf"),
-    url("./fonts/refrigerator-deluxe/refrigerator-deluxe-heavy.otf")
-      format("otf");
+  src: url("./fonts/refrigerator-deluxe/refrigerator-deluxe-regular.otf")
+    format("opentype");
+}
+@font-face {
+  font-family: "RefrigeratorDeluxe";
+  font-weight: bold;
+  src: url("./fonts/refrigerator-deluxe/refrigerator-deluxe-bold.otf")
+    format("opentype");
+}
+
+@font-face {
+  font-family: "Titillum";
+  src: url("./fonts/titillium/Titillium-Regular.otf") format("opentype");
 }
 @font-face {
   font-family: "Titillum";
-  src: local("Titillum"),
-    url("./fonts/titillium/Titillium-Regular.otf") format("otf"),
-    url("./fonts/titillium/Titillium-Light.otf") format("otf"),
-    url("./fonts/titillium/Titillium-Bold.otf") format("otf"),
-    url("./fonts/titillium/Titillium-Semibold.otf") format("otf"),
-    url("./fonts/titillium/Titillium-RegularItalic.otf") format("otf");
+  font-weight: bold;
+  src: url("./fonts/titillium/Titillium-Bold.otf") format("opentype");
 }
 
 .layout {
@@ -40,7 +38,8 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "Titillum";
+  font-family: "RefrigeratorDeluxe";
+  letter-spacing: 0.5px;
   color: white;
   margin: 0;
 }
@@ -49,4 +48,37 @@ p {
   font-family: "Titillum";
   color: white;
   margin: 0;
+}
+
+.game-logo-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: constants.$color-primary;
+  transition: 0.5s;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  p {
+    position: absolute;
+    bottom: 30vh;
+    left: 50%;
+    transform: translateX(-50%);
+    color: black;
+    font-size: 24px;
+  }
+
+  &.fade-out {
+    opacity: 0;
+  }
 }
