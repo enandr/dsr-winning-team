@@ -1,0 +1,52 @@
+@use "styles/constants.scss";
+
+@font-face {
+  font-family: "RefrigeratorDeluxe";
+  src: local("RefrigeratorDeluxe"),
+    url("./fonts/refrigerator-deluxe/refrigerator-deluxe-regular.otf")
+      format("otf"),
+    url("./fonts/refrigerator-deluxe/refrigerator-deluxe-bold.otf")
+      format("otf"),
+    url("./fonts/refrigerator-deluxe/refrigerator-deluxe-light.otf")
+      format("otf"),
+    url("./fonts/refrigerator-deluxe/refrigerator-deluxe-extrabold.otf")
+      format("otf"),
+    url("./fonts/refrigerator-deluxe/refrigerator-deluxe-heavy.otf")
+      format("otf");
+}
+@font-face {
+  font-family: "Titillum";
+  src: local("Titillum"),
+    url("./fonts/titillium/Titillium-Regular.otf") format("otf"),
+    url("./fonts/titillium/Titillium-Light.otf") format("otf"),
+    url("./fonts/titillium/Titillium-Bold.otf") format("otf"),
+    url("./fonts/titillium/Titillium-Semibold.otf") format("otf"),
+    url("./fonts/titillium/Titillium-RegularItalic.otf") format("otf");
+}
+
+.layout {
+  width: "100%";
+  height: 100vh;
+  background-color: constants.$color-secondary;
+}
+
+body * {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Titillum";
+  color: white;
+  margin: 0;
+}
+
+p {
+  font-family: "Titillum";
+  color: white;
+  margin: 0;
+}

@@ -1,0 +1,105 @@
+@use "../../styles/constants.scss";
+
+.level-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 2rem;
+
+  .level-select-card-container {
+    width: 100%;
+    padding: 2rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 2rem;
+
+    .level-select-card {
+      position: relative;
+      width: 100%;
+      border-radius: 15px;
+      background-color: white;
+      overflow: hidden;
+      cursor: pointer;
+
+      * {
+        transition: 0.2s;
+      }
+
+      .level-select-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .level-select-card-background {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 3rem 0;
+        gap: 1rem;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          rgba(constants.$color-secondary-muted, 0.05),
+          rgba(constants.$color-secondary-muted, 0.75)
+        );
+
+        .level-select-card-info {
+          opacity: 0;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 2rem;
+
+          .fighter-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+          }
+
+          img {
+            width: 75px;
+            height: 75px;
+          }
+        }
+
+        .level-select-card-difficulty {
+          position: absolute;
+          padding: 0.25rem 0.5rem;
+          background-color: rgba(constants.$color-secondary-muted, 0.85);
+          border-radius: 5px;
+          bottom: 1rem;
+          right: 1rem;
+        }
+
+        h2 {
+          padding: 0.5rem 0.75rem;
+          background-color: rgba(constants.$color-secondary-muted, 0.85);
+          border-radius: 5px;
+          background-color: rgba(constants.$color-secondary-muted, 0.85);
+        }
+      }
+
+      &:hover {
+        .level-select-card-background {
+          background: rgba(constants.$color-secondary-muted, 0.75);
+        }
+
+        .level-select-card-info {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
