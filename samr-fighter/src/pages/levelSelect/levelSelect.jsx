@@ -19,7 +19,8 @@ const actionWords = [
   "wham",
 ];
 
-const LevelSelect = ({ setLevel }) => {
+const LevelSelect = (props) => {
+    const { setLevel,gameController } = props;
   const [actionWord, setActionWord] = useState(0);
 
   useEffect(() => {
@@ -31,6 +32,20 @@ const LevelSelect = ({ setLevel }) => {
   return (
     <div className="level-select">
       <h1 className="choose-level-text">Choose your level:</h1>
+        {/*{gameController && (
+        // USE THIS CODE IF YOU WANT TO TEST RANDOM ATTACKS. DELETE IF NOT USED
+            <>
+                <h1>SAMR HEALTH: {gameController.samrHealth}</h1>
+                <h1>ENEMY HEALTH: {gameController.enemyHealth}</h1>
+                <button onClick={() => {
+                    const moveList = ['block','punch','kick','duck'];
+                    const samrAttack = moveList[Math.floor(Math.random()*moveList.length)];
+                    const enemyAttack = moveList[Math.floor(Math.random()*moveList.length)];
+                    console.log({enemyAttack, samrAttack})
+                    gameController.attack([samrAttack],[enemyAttack])
+                }}>ATTACK</button>
+            </>
+        )}*/}
       <img className="samr-animated" src={samr} alt="samr" />
       <img className="samr-animated salesforce" src={salesforce} alt="samr" />
       <p className="fight-text">{actionWords[actionWord]}!</p>

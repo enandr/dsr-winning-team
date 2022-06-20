@@ -3,6 +3,8 @@ import "./app.scss";
 import LevelSelect from "./pages/levelSelect";
 import logo from "./assets/logo.svg";
 import Level from "./pages/level";
+import CombatSystem from "./combat-system";
+import GameWrapper from "./combat-system/gameWrapper";
 
 function App() {
   const [showLogo, setShowLogo] = useState(true);
@@ -15,22 +17,30 @@ function App() {
   };
 
   return (
-    <div className="layout">
-      {!level ? (
-        <LevelSelect setLevel={setLevel} />
-      ) : (
-        <Level background={level.image} />
-      )}
-      {showLogo && (
-        <div
-          className={`game-logo-container ${fadeOutLogo && "fade-out"}`}
-          onClick={onLogoClick}
-        >
-          <img src={logo} alt="samr-fighter" className="game-logo" />
-          <p>(Click to begin)</p>
+      // <GameWrapper>
+        <div className="layout">
+          {!level ? (
+              // <GameWrapper>
+                  <LevelSelect setLevel={setLevel}/>
+              // </GameWrapper>
+
+          ) : (
+              <GameWrapper>
+                  <Level background={level.image} />
+              </GameWrapper>
+          )}
+          {showLogo && (
+              <div
+                  className={`game-logo-container ${fadeOutLogo && "fade-out"}`}
+                  onClick={onLogoClick}
+              >
+                <img src={logo} alt="samr-fighter" className="game-logo" />
+                <p>(Click to begin)</p>
+              </div>
+          )}
         </div>
-      )}
-    </div>
+      // </GameWrapper>
+
   );
 }
 

@@ -12,6 +12,20 @@ function Level({ background }) {
         backgroundImage: `${background}`,
       }}
     >
+        {/*{gameController && (
+        // USE THIS CODE IF YOU WANT TO TEST RANDOM ATTACKS. DELETE IF NOT USED
+            <>
+                <h1>SAMR HEALTH: {gameController.samrHealth}</h1>
+                <h1>ENEMY HEALTH: {gameController.enemyHealth}</h1>
+                <button onClick={() => {
+                    const moveList = ['block','punch','kick','duck'];
+                    const samrAttack = moveList[Math.floor(Math.random()*moveList.length)];
+                    const enemyAttack = moveList[Math.floor(Math.random()*moveList.length)];
+                    console.log({enemyAttack, samrAttack})
+                    gameController.attack([samrAttack],[enemyAttack])
+                }}>ATTACK</button>
+            </>
+        )}*/}
       <div
         style={{
           display: "flex",
